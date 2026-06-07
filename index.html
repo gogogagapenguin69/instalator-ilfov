@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marius Instal | Instalații Sanitare și Carotări</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+            --primary-color: #0A192F;
+            --accent-color: #D4AF37; /* Premium Gold */
+            --text-dark: #333333;
+            --text-light: #F8F9FA;
+            --bg-light: #FFFFFF;
+            --bg-gray: #F4F6F8;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- Navigation --- */
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            margin-left: 2rem;
+        }
+
+        .nav-menu a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        .lang-switch {
+            background: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.3rem 0.6rem;
+            cursor: pointer;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .lang-switch:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.85)), url('https://images.unsplash.com/photo-1504307651254-35680f356f12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            color: var(--text-light);
+        }
+
+        .hero h1 {
+            color: var(--text-light);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #d1d5db;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            margin: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #e5c158;
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: #ffffff;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebe57;
+            transform: translateY(-2px);
+        }
+
+        /* --- Sections General --- */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 1rem auto 0;
+        }
+
+        /* --- Services --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid #eaeaea;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: var(--accent-color);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* --- Gallery --- */
+        .gallery-section {
+            background-color: var(--bg-gray);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* --- Contact --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 30px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--primary-color);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1.5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Marius Instal</a>
+            <ul class="nav-menu">
+                <li><a href="#home" data-i18n="navHome">Acasă</a></li>
+                <li><a href="#services" data-i18n="navServices">Servicii</a></li>
+                <li><a href="#gallery" data-i18n="navGallery">Galerie</a></li>
+                <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+                <li><button class="lang-switch" onclick="toggleLanguage()" id="langBtn">EN</button></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 data-i18n="heroTitle">Servicii Profesionale de Instalații și Carotare</h1>
+            <p data-i18n="heroDesc">Soluții premium pentru proiectele tale. Calitate, precizie și promptitudine garantate.</p>
+            <a href="tel:+40700000000" class="btn btn-primary"><i class="fas fa-phone-alt"></i> <span data-i18n="btnCall">Sună Acum</span></a>
+            <a href="https://wa.me/40700000000" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> <span data-i18n="btnWa">WhatsApp</span></a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title" data-i18n="servicesTitle">Serviciile Noastre</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-tools service-icon"></i>
+                <h3 data-i18n="srv1Title">Instalații Sanitare</h3>
+                <p data-i18n="srv1Desc">Montaj, reparații, revizii și întreținere pentru instalații sanitare rezidențiale și comerciale.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-circle-notch service-icon"></i>
+                <h3 data-i18n="srv2Title">Carotare Beton</h3>
+                <p data-i18n="srv2Desc">Execuție găuri precise prin carotare umedă/uscată în beton armat, cărămidă și BCA.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-truck-fast service-icon"></i>
+                <h3 data-i18n="srv3Title">Intervenții Rapide</h3>
+                <p data-i18n="srv3Desc">Echipă pregătită pentru urgențe și remedieri rapide ale avariilor la instalații.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <h2 class="section-title" data-i18n="galleryTitle">Galerie Foto</h2>
+        <div class="gallery-grid">
+            <!-- Using placeholder images relevant to construction/plumbing -->
+            <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lucrare" class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1585909695284-32d2985ac9c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lucrare" class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lucrare" class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356f12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lucrare" class="gallery-item">
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title" data-i18n="contactTitle">Contactează-ne</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p><i class="fas fa-phone"></i> +40 700 000 000</p>
+                <p><i class="fas fa-envelope"></i> contact@mariusinstal.ro</p>
+                <p><i class="fas fa-map-marker-alt"></i> București, România</p>
+                <p><i class="fas fa-clock"></i> <span data-i18n="program">Luni - Sâmbătă: 08:00 - 18:00</span></p>
+            </div>
+            <form class="contact-form" action="https://formspree.io/f/your_form_id" method="POST">
+                <input type="text" name="name" placeholder="Numele dumneavoastră" required data-i18n-placeholder="formName">
+                <input type="tel" name="phone" placeholder="Număr de telefon" required data-i18n-placeholder="formPhone">
+                <textarea name="message" placeholder="Descrieți lucrarea dorită..." required data-i18n-placeholder="formMsg"></textarea>
+                <button type="submit" class="btn btn-primary" data-i18n="formBtn">Trimite Mesaj</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Marius Instal. <span data-i18n="footerText">Toate drepturile rezervate.</span></p>
+    </footer>
+
+    <!-- JavaScript for Functionality -->
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+        const navLinks = document.querySelectorAll(".nav-menu a");
+
+        hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+            const icon = hamburger.querySelector("i");
+            if(navMenu.classList.contains("active")){
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-times");
+            } else {
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+            }
+        });
+
+        navLinks.forEach(n => n.addEventListener("click", () => {
+            navMenu.classList.remove("active");
+            const icon = hamburger.querySelector("i");
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+        }));
+
+        // Bilingual Support Dictionary
+        const translations = {
+            ro: {
+                navHome: "Acasă", navServices: "Servicii", navGallery: "Galerie", navContact: "Contact",
+                heroTitle: "Servicii Profesionale de Instalații și Carotare",
+                heroDesc: "Soluții premium pentru proiectele tale. Calitate, precizie și promptitudine garantate.",
+                btnCall: "Sună Acum", btnWa: "WhatsApp",
+                servicesTitle: "Serviciile Noastre",
+                srv1Title: "Instalații Sanitare",
+                srv1Desc: "Montaj, reparații, revizii și întreținere pentru instalații sanitare rezidențiale și comerciale.",
+                srv2Title: "Carotare Beton",
+                srv2Desc: "Execuție găuri precise prin carotare umedă/uscată în beton armat, cărămidă și BCA.",
+                srv3Title: "Intervenții Rapide",
+                srv3Desc: "Echipă pregătită pentru urgențe și remedieri rapide ale avariilor la instalații.",
+                galleryTitle: "Galerie Foto",
+                contactTitle: "Contactează-ne",
+                program: "Luni - Sâmbătă: 08:00 - 18:00",
+                formName: "Numele dumneavoastră", formPhone: "Număr de telefon", formMsg: "Descrieți lucrarea dorită...", formBtn: "Trimite Mesaj",
+                footerText: "Toate drepturile rezervate."
+            },
+            en: {
+                navHome: "Home", navServices: "Services", navGallery: "Gallery", navContact: "Contact",
+                heroTitle: "Professional Plumbing & Core Drilling Services",
+                heroDesc: "Premium solutions for your projects. Quality, precision, and promptness guaranteed.",
+                btnCall: "Call Now", btnWa: "WhatsApp",
+                servicesTitle: "Our Services",
+                srv1Title: "Plumbing Services",
+                srv1Desc: "Installation, repairs, and maintenance for residential and commercial plumbing systems.",
+                srv2Title: "Concrete Coring",
+                srv2Desc: "Precise hole execution via wet/dry core drilling in reinforced concrete and brick.",
+                srv3Title: "Emergency Repairs",
+                srv3Desc: "Rapid response team ready for emergencies and quick system repairs.",
+                galleryTitle: "Photo Gallery",
+                contactTitle: "Contact Us",
+                program: "Monday - Saturday: 08:00 AM - 06:00 PM",
+                formName: "Your Full Name", formPhone: "Phone Number", formMsg: "Describe your project...", formBtn: "Send Message",
+                footerText: "All rights reserved."
+            }
+        };
+
+        // Language Switcher Logic
+        let currentLang = 'ro';
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'ro' ? 'en' : 'ro';
+            document.documentElement.lang = currentLang;
+            document.getElementById('langBtn').innerText = currentLang === 'ro' ? 'EN' : 'RO';
+            
+            // Update Text Elements
+            document.querySelectorAll('[data-i18n]').forEach(elem => {
+                const key = elem.getAttribute('data-i18n');
+                elem.innerText = translations[currentLang][key];
+            });
+
+            // Update Placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(elem => {
+                const key = elem.getAttribute('data-i18n-placeholder');
+                elem.placeholder = translations[currentLang][key];
+            });
+        }
+    </script>
+</body>
+</html>
